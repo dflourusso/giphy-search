@@ -10,6 +10,7 @@ type counterSelectorType = ReturnType<typeof counterSelector>
 
 export function* onIncrement() {
   const counter = (yield select(counterSelector)) as counterSelectorType
+  // eslint-disable-next-line no-console
   console.log(`Counter: ${counter}`)
 }
 

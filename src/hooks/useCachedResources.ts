@@ -14,7 +14,7 @@ export default function useCachedResources() {
         await Font.loadAsync({
           ...FontAwesome.font,
           // eslint-disable-next-line global-require
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          'space-mono': require('../../assets/fonts/SpaceMono-Regular.ttf'),
         })
       } catch (e) {
         // eslint-disable-next-line no-console
