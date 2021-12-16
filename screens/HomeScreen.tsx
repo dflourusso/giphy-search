@@ -1,27 +1,29 @@
-import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
-
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
-    </View>
-  );
-}
+import * as React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: "80%",
+    width: '80%',
   },
-});
+})
+
+const HomeScreen: React.FC = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Home Screen</Text>
+    </View>
+  )
+}
+
+export default HomeScreen
