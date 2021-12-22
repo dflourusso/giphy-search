@@ -1,15 +1,20 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { Container, Text } from './styles'
+import React from 'react'
 import Colors from '../../constants/Colors'
+import { Container, Text } from './styles'
 
 interface HistoryRowProps {
   value: string
+  onPress?: () => void
 }
 
-const HistoryRow: React.FC<HistoryRowProps> = ({ value }) => {
+const HistoryRow: React.FC<HistoryRowProps> = ({
+  value,
+  onPress = () => {},
+}) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Text>{value}</Text>
       <MaterialCommunityIcons
         name="chevron-right"
