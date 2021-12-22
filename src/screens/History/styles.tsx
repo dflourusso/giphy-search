@@ -1,8 +1,14 @@
+import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
-import Colors from '../../constants/Colors'
 
 export const Container = styled.View`
   flex: 1;
+  padding: 8px;
+`
+
+export const ItemSeparatorComponent = styled.View`
+  width: 100%;
+  height: 8px;
 `
 
 export const Title = styled.Text`
@@ -10,17 +16,10 @@ export const Title = styled.Text`
   font-weight: bold;
 `
 
-export const Header = styled.View`
-  flex-direction: row;
-  padding: 8px;
-`
-
-export const SearchInput = styled.TextInput.attrs(() => ({
-  placeholder: 'Search for gifs...',
-}))`
-  padding: 8px;
-  background-color: ${Colors.backgroundInput};
-  border-radius: 8px;
-  margin-right: 8px;
-  flex: 1;
-`
+export const styles = StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
