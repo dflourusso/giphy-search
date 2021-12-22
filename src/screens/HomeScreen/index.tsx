@@ -1,18 +1,53 @@
 import * as React from 'react'
+import { FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import IncrementButton from '../../components/IncrementButton'
+import GifThumb from '../../components/GifThumb'
+import SearchButton from '../../components/SearchButton'
 import { RootState } from '../../store'
-import { helloActions } from '../../store/ducks/hello'
-import { Container, Title } from './styles'
+import { gifsActions } from '../../store/ducks/gifs'
+import { Container, Header, SearchInput } from './styles'
+
+const NUMBER_OF_COLUMNS = 3
 
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch()
-  const counter = useSelector((state: RootState) => state.helloReducer.counter)
+  const { data, search } = useSelector((state: RootState) => state.gifsReducer)
+
+  const onSearch = React.useCallback(() => {
+    dispatch(gifsActions.setPage(1))
+    dispatch(gifsActions.requestData())
+  }, [dispatch])
+
+  const onChangeText = React.useCallback(
+    (text: string) => {
+      dispatch(gifsActions.setSearch(text))
+    },
+    [dispatch],
+  )
+
+  const addPage = () => {
+    dispatch(gifsActions.addPage())
+  }
 
   return (
     <Container>
-      <Title>Home Screen {counter}</Title>
-      <IncrementButton onPress={() => dispatch(helloActions.increment())} />
+      <Header>
+        <SearchInput value={search} onChangeText={onChangeText} />
+        <SearchButton onPress={onSearch} />
+      </Header>
+      <FlatList
+        numColumns={NUMBER_OF_COLUMNS}
+        data={data}
+        keyExtractor={(p) => p.id}
+        renderItem={({ item }) => (
+          <GifThumb
+            numberOfColumns={NUMBER_OF_COLUMNS}
+            uri={item.images.original.url}
+          />
+        )}
+        scrollEventThrottle={16}
+        onEndReached={addPage}
+      />
     </Container>
   )
 }
