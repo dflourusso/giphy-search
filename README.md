@@ -26,3 +26,10 @@ Todo: The unit tests were not done since i don't have enough time yet
 # Author
 
 - Daniel Fernando Lourusso
+
+# Screenshots
+
+![Home empty](https://raw.githubusercontent.com/dflourusso/giphy-search/main/screenshots/screenshot-01.png)
+![Home with search](https://raw.githubusercontent.com/dflourusso/giphy-search/main/screenshots/screenshot-02.png)
+![History](https://raw.githubusercontent.com/dflourusso/giphy-search/main/screenshots/screenshot-03.png)
+![History empty](https://raw.githubusercontent.com/dflourusso/giphy-search/main/screenshots/screenshot-04.png)
