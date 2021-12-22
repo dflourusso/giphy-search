@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects'
-import hello from './hello'
+import gifs from './gifs'
 
 function* rootSaga() {
-  yield all([hello()])
+  yield all([gifs()])
 }
 
 export default rootSaga

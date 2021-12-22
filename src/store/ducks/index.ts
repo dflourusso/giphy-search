@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { helloReducer } from './hello'
+import { gifsReducer } from './gifs'
 
-const reducers = combineReducers({ helloReducer })
+const reducers = combineReducers({ gifsReducer })
 
 export default reducers
