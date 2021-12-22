@@ -1,5 +1,5 @@
 export default {
-  text: '#000',
+  text: '#222',
   background: '#fff',
   backgroundInput: '#ddd',
   tint: '#2f95dc',

@@ -1,7 +1,10 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native'
 import * as React from 'react'
 import { FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { RootStackParamList } from '../../../types'
 import GifThumb from '../../components/GifThumb'
+import HistoryLink from '../../components/HistoryLink'
 import SearchButton from '../../components/SearchButton'
 import { RootState } from '../../store'
 import { gifsActions } from '../../store/ducks/gifs'
@@ -10,6 +13,7 @@ import { Container, Header, SearchInput } from './styles'
 const NUMBER_OF_COLUMNS = 3
 
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   const dispatch = useDispatch()
   const { data, search } = useSelector((state: RootState) => state.gifsReducer)
 
@@ -35,6 +39,7 @@ const HomeScreen: React.FC = () => {
         <SearchInput value={search} onChangeText={onChangeText} />
         <SearchButton onPress={onSearch} />
       </Header>
+      <HistoryLink onPress={() => navigation.navigate('HistoryScreen')} />
       <FlatList
         numColumns={NUMBER_OF_COLUMNS}
         data={data}
