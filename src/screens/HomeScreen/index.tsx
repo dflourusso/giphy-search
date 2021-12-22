@@ -10,7 +10,7 @@ import HistoryLink from '../../components/HistoryLink'
 import SearchButton from '../../components/SearchButton'
 import { RootState } from '../../store'
 import { gifsActions } from '../../store/ducks/gifs'
-import { Container, Header, SearchInput } from './styles'
+import { Container, Header, SearchInput, styles } from './styles'
 
 const NUMBER_OF_COLUMNS = 3
 
@@ -44,11 +44,9 @@ const HomeScreen: React.FC = () => {
         <HistoryLink onPress={() => navigation.navigate('HistoryScreen')} />
       </Header>
       <FlatList
-        contentContainerStyle={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+        contentContainerStyle={
+          data.length === 0 ? styles.contentContainer : null
+        }
         numColumns={NUMBER_OF_COLUMNS}
         data={data}
         keyExtractor={(p) => p.id}

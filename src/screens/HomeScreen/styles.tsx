@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 import Colors from '../../constants/Colors'
 
@@ -27,3 +28,11 @@ export const SearchInput = styled.TextInput.attrs(() => ({
   margin: 4px;
   flex: 1;
 `
+
+export const styles = StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
