@@ -8,7 +8,9 @@ const historyService = {
     return JSON.parse(value ?? '[]')
   },
 
-  save: async (search: string): Promise<void> => {
+  save: async (searchValue: string): Promise<void> => {
+    const search = `${searchValue}`.trim()
+    if (!search) return
     const previousValue = await historyService.retrive()
     const valueWithUniqueElements = [...new Set([search, ...previousValue])]
     const value = JSON.stringify(valueWithUniqueElements)
