@@ -1,5 +1,7 @@
 import * as React from 'react'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Container, Text } from './styles'
+import Colors from '../../constants/Colors'
 
 type IncrementButtonProps = {
   onPress?: () => void
@@ -11,7 +13,7 @@ const SearchButton: React.FC<IncrementButtonProps> = ({
 }) => {
   return (
     <Container onPress={onPress}>
-      <Text>Search</Text>
+      <MaterialCommunityIcons name="magnify" size={20} color={Colors.tint} />
     </Container>
   )
 }

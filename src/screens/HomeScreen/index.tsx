@@ -38,8 +38,8 @@ const HomeScreen: React.FC = () => {
       <Header>
         <SearchInput value={search} onChangeText={onChangeText} />
         <SearchButton onPress={onSearch} />
+        <HistoryLink onPress={() => navigation.navigate('HistoryScreen')} />
       </Header>
-      <HistoryLink onPress={() => navigation.navigate('HistoryScreen')} />
       <FlatList
         numColumns={NUMBER_OF_COLUMNS}
         data={data}

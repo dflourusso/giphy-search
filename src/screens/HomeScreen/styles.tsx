@@ -18,9 +18,12 @@ export const Header = styled.View`
 export const SearchInput = styled.TextInput.attrs(() => ({
   placeholder: 'Search for gifs...',
 }))`
-  padding: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   background-color: ${Colors.backgroundInput};
   border-radius: 8px;
-  margin-right: 8px;
+  margin: 4px;
   flex: 1;
 `
