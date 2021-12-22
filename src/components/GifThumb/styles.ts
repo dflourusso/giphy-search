@@ -8,11 +8,12 @@ type ContainerProps = {
   numberOfColumns: number
 }
 
-export const Container = styled.View<ContainerProps>`
+export const Container = styled.TouchableOpacity<ContainerProps>`
   width: ${({ numberOfColumns }) => windowWidth / numberOfColumns};
   height: ${({ numberOfColumns }) => windowWidth / numberOfColumns};
   padding: 4px;
 `
+
 export const Image = styled.Image`
   width: 100%;
   height: 100%;

@@ -4,6 +4,7 @@ import { FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootStackParamList } from '../../../types'
 import Empty from '../../components/Empty'
+import GifModal from '../../components/GifModal'
 import GifThumb from '../../components/GifThumb'
 import HistoryLink from '../../components/HistoryLink'
 import SearchButton from '../../components/SearchButton'
@@ -16,6 +17,7 @@ const NUMBER_OF_COLUMNS = 3
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   const dispatch = useDispatch()
+  const [selectedGif, setSelectedGif] = React.useState<string>()
   const { data, search } = useSelector((state: RootState) => state.gifsReducer)
 
   const onSearch = React.useCallback(() => {
@@ -54,12 +56,14 @@ const HomeScreen: React.FC = () => {
           <GifThumb
             numberOfColumns={NUMBER_OF_COLUMNS}
             uri={item.images.original.url}
+            onPress={() => setSelectedGif(item.images.original.url)}
           />
         )}
         scrollEventThrottle={16}
         onEndReached={addPage}
         ListEmptyComponent={Empty}
       />
+      <GifModal url={selectedGif} onClose={() => setSelectedGif(undefined)} />
     </Container>
   )
 }
