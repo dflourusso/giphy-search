@@ -1,7 +1,7 @@
-import * as React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { Container, Text } from './styles'
+import * as React from 'react'
 import Colors from '../../constants/Colors'
+import { Container } from './styles'
 
 type IncrementButtonProps = {
   onPress?: () => void

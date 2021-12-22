@@ -3,6 +3,7 @@ import * as React from 'react'
 import { FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootStackParamList } from '../../../types'
+import Empty from '../../components/Empty'
 import GifThumb from '../../components/GifThumb'
 import HistoryLink from '../../components/HistoryLink'
 import SearchButton from '../../components/SearchButton'
@@ -41,6 +42,11 @@ const HomeScreen: React.FC = () => {
         <HistoryLink onPress={() => navigation.navigate('HistoryScreen')} />
       </Header>
       <FlatList
+        contentContainerStyle={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
         numColumns={NUMBER_OF_COLUMNS}
         data={data}
         keyExtractor={(p) => p.id}
@@ -52,6 +58,7 @@ const HomeScreen: React.FC = () => {
         )}
         scrollEventThrottle={16}
         onEndReached={addPage}
+        ListEmptyComponent={Empty}
       />
     </Container>
   )
