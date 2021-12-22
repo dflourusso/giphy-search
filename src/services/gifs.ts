@@ -5,7 +5,9 @@ const RECORDS_PERPAGE = 30
 
 export interface Gif {
   id: string
-  url: string
+  images: {
+    original: { url: string }
+  }
 }
 
 type SearchParams = {
