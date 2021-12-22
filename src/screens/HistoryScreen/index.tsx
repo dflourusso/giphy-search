@@ -3,6 +3,8 @@ import * as React from 'react'
 import { FlatList } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { RootStackParamList } from '../../../types'
+import CleanButton from '../../components/CleanButton'
+import EmptyHistory from '../../components/EmptyHistory'
 import HistoryRow from '../../components/HistoryRow'
 import historyService from '../../services/history'
 import { gifsActions } from '../../store/ducks/gifs'
@@ -12,6 +14,7 @@ const HistoryScreen: React.FC = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   const [data, setData] = React.useState<string[]>([])
+  const historyIsEmpty = data.length === 0
 
   React.useEffect(() => {
     historyService.retrive().then(setData)
@@ -26,19 +29,24 @@ const HistoryScreen: React.FC = () => {
     [dispatch, navigation],
   )
 
+  const onPressClean = React.useCallback(async () => {
+    await historyService.clean()
+    setData([])
+  }, [])
+
   return (
     <Container>
       <FlatList
-        contentContainerStyle={
-          data.length === 0 ? styles.contentContainer : null
-        }
+        contentContainerStyle={historyIsEmpty ? styles.contentContainer : null}
         data={data}
         keyExtractor={(p) => p}
         renderItem={({ item }) => (
           <HistoryRow value={item} onPress={() => onPressItem(item)} />
         )}
         ItemSeparatorComponent={ItemSeparatorComponent}
+        ListEmptyComponent={EmptyHistory}
       />
+      {!historyIsEmpty && <CleanButton onPress={onPressClean} />}
     </Container>
   )
 }

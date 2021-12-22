@@ -3,6 +3,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const SEARCH_HISTORY_KEY = '@search_history'
 
 const historyService = {
+  clean: async (): Promise<void> => {
+    await AsyncStorage.removeItem(SEARCH_HISTORY_KEY)
+  },
+
   retrive: async (): Promise<string[]> => {
     const value = await AsyncStorage.getItem(SEARCH_HISTORY_KEY)
     return JSON.parse(value ?? '[]')

@@ -4,4 +4,5 @@ export default {
   backgroundInput: '#ddd',
   modalBackdrop: 'rgba(0, 0, 0, .4)',
   tint: '#2f95dc',
+  destructive: '#E0342B',
 }
