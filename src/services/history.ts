@@ -10,7 +10,8 @@ const historyService = {
 
   save: async (search: string): Promise<void> => {
     const previousValue = await historyService.retrive()
-    const value = JSON.stringify([search, ...previousValue])
+    const valueWithUniqueElements = [...new Set([search, ...previousValue])]
+    const value = JSON.stringify(valueWithUniqueElements)
     await AsyncStorage.setItem(SEARCH_HISTORY_KEY, value)
   },
 }

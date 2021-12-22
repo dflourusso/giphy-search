@@ -1,6 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects'
 import { RootState } from '..'
 import gifService, { Gif } from '../../services/gifs'
+import historyService from '../../services/history'
 import { gifsActions } from '../ducks/gifs'
 
 type SearchParamsSelector = {
@@ -22,7 +23,15 @@ export function* resquestSearch() {
   yield put(gifsActions.setData(data))
 }
 
+export function* storeSearchKeyword() {
+  const { search } = (yield select(
+    searchParamsSelector,
+  )) as SearchParamsSelector
+  yield call(historyService.save, search)
+}
+
 export default function* gifsSaga() {
   yield takeEvery(gifsActions.requestData.type, resquestSearch)
+  yield takeEvery(gifsActions.requestData.type, storeSearchKeyword)
   yield takeEvery(gifsActions.addPage.type, resquestSearch)
 }
